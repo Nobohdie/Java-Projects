@@ -9,7 +9,7 @@ public class Main  // MyProject
 	public static int playerPos = 0;
 	public static Scanner sc = new Scanner(System.in);
 	public static boolean keepPlaying = true;
-	public static String character = " •› ";
+	public static String character = " :) ";
 	public static Player player = new Player();
 	public static int level = -1;
 	
@@ -26,8 +26,10 @@ public class Main  // MyProject
 			}
 		System.out.print("\nThanks for Playing! Enter your name to save your score: ");
 		String name = sc.nextLine();
+		if(name != "") {
 		Past newRun = new Past(name, level);
 		Save.writeFile(newRun);
+		}
 	}
 
 	// a method to clear the replit console
@@ -65,7 +67,7 @@ public class Main  // MyProject
 		boolean canMove = !(tempTile.gety() != caveTiles.get(playerPos).gety() && (direction.equals("d") || direction.equals("a")));
  		if(tempTile.isStandable() && canMove) playerPos = tempPos;
 		clear();
-		int chance = (int)(Math.random() * 10 + 1);
+		int chance = (int)(Math.random() * 15 + 1);
 		if(caveTiles.get(playerPos).getTileType().equals("blank") && chance == 2 && level > 4) player.encounter();
 		printCave();
 	}
